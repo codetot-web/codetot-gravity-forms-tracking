@@ -1,10 +1,12 @@
 <?php
+
 /**
  * @package    Codetot_Base
  * @subpackage Codetot_Blocks_Templates
  * @author     CODE TOT JS <dev@codetot.com>
  */
-class Codetot_Gravity_Forms_Cookies {
+class Codetot_Gravity_Forms_Cookies
+{
   /**
    * Singleton instance
    *
@@ -33,7 +35,8 @@ class Codetot_Gravity_Forms_Cookies {
     return self::$instance;
   }
 
-	public function __construct() {
+  public function __construct()
+  {
     add_action('after_setup_theme', array($this, 'check_and_set_cookies'));
   }
 
@@ -43,7 +46,8 @@ class Codetot_Gravity_Forms_Cookies {
    * @param string $key
    * @return boolean
    */
-  public function is_allowed_key($key) {
+  public function is_allowed_key($key)
+  {
     return in_array($key, $this::$allowed_keys);
   }
 
@@ -54,10 +58,11 @@ class Codetot_Gravity_Forms_Cookies {
    * @param string $time
    * @return void
    */
-  public function set_cookie($value, $time = '') {
+  public function set_cookie($value, $time = '')
+  {
     $_time = !empty($time) ? $time : time() + (86400 * 30); // Default is 1 day
 
-    if ( empty($_COOKIE[$this::$cookie_name]) ) {
+    if (empty($this->read_cookies())) {
       setcookie($this::$cookie_name, $value, $_time, COOKIEPATH, COOKIE_DOMAIN);
     }
   }
@@ -65,10 +70,11 @@ class Codetot_Gravity_Forms_Cookies {
   /**
    * Set cookies in array format
    *
-   * @param [type] $values
+   * @param array $values
    * @return void
    */
-  public function set_cookies($values) {
+  public function set_cookies($values)
+  {
     if (is_array($values)) {
       $this->set_cookie(json_encode($values));
 
@@ -78,7 +84,8 @@ class Codetot_Gravity_Forms_Cookies {
     }
   }
 
-  public function read_cookie($key) {
+  public function read_cookie($key)
+  {
     $cookies = $this->read_cookies();
 
     if (!empty($cookies) && !empty($cookies[$key])) {
@@ -93,7 +100,8 @@ class Codetot_Gravity_Forms_Cookies {
    *
    * @return void
    */
-  public function read_cookies() {
+  public function read_cookies()
+  {
     return !empty($_COOKIE[$this::$cookie_name]) ? json_decode(stripslashes($_COOKIE[$this::$cookie_name]), true) : '';
   }
 
@@ -102,11 +110,12 @@ class Codetot_Gravity_Forms_Cookies {
    *
    * @return void
    */
-  public function check_and_set_cookies() {
+  public function check_and_set_cookies()
+  {
     $available_values = [];
 
     foreach ($this::$allowed_keys as $query_key) {
-      if ( !empty($_GET[$query_key]) ) {
+      if (!empty($_GET[$query_key])) {
         $available_values[$query_key] = esc_attr($_GET[$query_key]);
       }
     }
