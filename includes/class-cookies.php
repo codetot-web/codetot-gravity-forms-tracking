@@ -67,6 +67,18 @@ class Codetot_Gravity_Forms_Cookies
     }
   }
 
+  public function is_cookies_validated() {
+    if (empty($_COOKIE[$this::$cookie_name])) {
+      return false;
+    }
+
+    // Try to read cookies and ensure it must be array
+    $cookie_value = stripslashes($_COOKIE[$this::$cookie_name]);
+    $cookie_value_decoded = json_decode($cookie_value);
+
+    return !empty($cookie_value_decoded) && is_array($cookie_value_decoded);
+  }
+
   /**
    * Set cookies in array format
    *
@@ -75,7 +87,8 @@ class Codetot_Gravity_Forms_Cookies
    */
   public function set_cookies($values)
   {
-    if (is_array($values)) {
+    // In case cookie is empty or not validate, we override existing cookies
+    if (is_array($values) && !$this->is_cookies_validated()) {
       $this->set_cookie(json_encode($values));
 
       return true;
@@ -102,7 +115,7 @@ class Codetot_Gravity_Forms_Cookies
    */
   public function read_cookies()
   {
-    return !empty($_COOKIE[$this::$cookie_name]) ? json_decode(stripslashes($_COOKIE[$this::$cookie_name]), true) : '';
+    return !empty($_COOKIE[$this::$cookie_name]) && $this->is_cookies_validated() ? json_decode(stripslashes($_COOKIE[$this::$cookie_name]), true) : '';
   }
 
   /**
