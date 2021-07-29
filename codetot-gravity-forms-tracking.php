@@ -9,7 +9,7 @@
  * Plugin Name:       Code Tot - Gravity Forms Tracking
  * Plugin URI:        https://github.com/codetot-web/codetot-gravity-forms-tracking
  * Description:       Integrate tracking source, size and campaign for your forms.
- * Version:           1.0.5
+ * Version:           1.0.6
  * Author:            CODE TOT JSC
  * Author URI:        https://codetot.com
  * License:           GPL-2.0+
@@ -23,7 +23,7 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-define( 'CODETOT_GF_TRACKING_VERSION', '1.0.5' );
+define( 'CODETOT_GF_TRACKING_VERSION', '1.0.6' );
 define( 'CODETOT_GF_TRACKING_PLUGIN_SLUG', 'ct-gf-tracking' );
 define( 'CODETOT_GF_TRACKING_PLUGIN_NAME', esc_html_x('CT GF Tracking', 'plugin name', 'ct-gf-tracking'));
 define( 'CODETOT_GF_TRACKING_DIR', plugin_dir_path(__FILE__));
