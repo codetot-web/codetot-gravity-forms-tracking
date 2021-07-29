@@ -2,14 +2,14 @@
 
 /**
  * @link              https://codetot.com
- * @since             1.0.0
+ * @since             1.0.1
  * @package           Codetot_Base
  *
  * @wordpress-plugin
  * Plugin Name:       CT - Gravity Forms Tracking (Addons)
  * Plugin URI:        https://codetot.com
  * Description:       Integrate tracking source, size and campaign for your forms.
- * Version:           1.0.0
+ * Version:           1.0.1
  * Author:            CODE TOT JSC
  * Author URI:        https://codetot.com
  * License:           GPL-2.0+
