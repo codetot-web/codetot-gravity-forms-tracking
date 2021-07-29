@@ -1,12 +1,13 @@
 === Code Tot - Gravity Form Tracking ===
-Contributors: codetot, khoipro
-Donate link: https://codetot.com
-Tags: gravity forms, addons
-Requires at least: 3.0.1
-Tested up to: 5.8
-Stable tag: 5.7
-License: GPLv2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Contributors:      codetot, khoipro
+Donate link:       https://codetot.com
+Tags:              gravity forms, addons, tracking, cookies
+Requires at least: 4.4
+Tested up to:      5.7
+Stable tag:        1.0.2
+License:           GPL-2.0
+License:           GPLv2 or later
+License URI:       http://www.gnu.org/licenses/gpl-2.0.html
 
 Seamless save marketing campaign
 
