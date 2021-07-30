@@ -17,7 +17,7 @@ class Codetot_Gravity_Forms_Tracking {
   }
 
   public function set_value_utm_source() {
-    $cookie_value = Codetot_Gravity_Forms_Cookies::instance()->read_cookie('utm_source');
+    $cookie_value = Codetot_Gravity_Forms_Tracking_Cookies::instance()->read_cookie('utm_source');
 
     if (empty($_GET['utm_source']) && !empty($cookie_value)) {
       return $cookie_value;
@@ -25,7 +25,7 @@ class Codetot_Gravity_Forms_Tracking {
   }
 
   public function set_value_utm_size() {
-    $cookie_value = Codetot_Gravity_Forms_Cookies::instance()->read_cookie('utm_size');
+    $cookie_value = Codetot_Gravity_Forms_Tracking_Cookies::instance()->read_cookie('utm_size');
 
     if (empty($_GET['utm_size']) && !empty($cookie_value)) {
       return $cookie_value;
@@ -33,7 +33,7 @@ class Codetot_Gravity_Forms_Tracking {
   }
 
   public function set_value_utm_campaign() {
-    $cookie_value = Codetot_Gravity_Forms_Cookies::instance()->read_cookie('utm_campaign');
+    $cookie_value = Codetot_Gravity_Forms_Tracking_Cookies::instance()->read_cookie('utm_campaign');
 
     if (empty($_GET['utm_campaign']) && !empty($cookie_value)) {
       return $cookie_value;

@@ -20,7 +20,7 @@ class Codetot_Gravity_Forms_Tracking_Cookies
     'utm_campaign'
   ];
 
-  private static $cookie_name = 'ct_gf_tracking';
+  private static $cookie_name = 'STYXKEY_ct_gf_tracking';
 
   /**
    * Get singleton instance.
@@ -60,10 +60,11 @@ class Codetot_Gravity_Forms_Tracking_Cookies
    */
   public function set_cookie($value, $time = '')
   {
-    $_time = !empty($time) ? $time : time() + (86400 * 30); // Default is 1 day
+    $_default_time = time() + (86400 * 30);
+    $_time = !empty($time) ? $time : $_default_time; // Default is 1 day
 
     if (empty($this->read_cookies())) {
-      setcookie($this::$cookie_name, $value, $_time, COOKIEPATH, COOKIE_DOMAIN);
+      setcookie($this::$cookie_name, $value, apply_filters('ct_gf_cookie_time', $_time), COOKIEPATH, COOKIE_DOMAIN);
     }
   }
 
