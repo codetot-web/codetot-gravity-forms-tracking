@@ -37,7 +37,7 @@ class Codetot_Gravity_Forms_Tracking_Cookies
 
   public function __construct()
   {
-    add_action('after_setup_theme', array($this, 'check_and_set_cookies'));
+    add_action('init', array($this, 'check_and_set_cookies'));
   }
 
   /**
