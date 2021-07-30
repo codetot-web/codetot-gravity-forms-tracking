@@ -1,6 +1,8 @@
 <?php
 
 class Codetot_Gravity_Forms_Tracking {
+  var $cookies = null;
+
   private static $allowed_keys = [
     'utm_source',
     'utm_size',
@@ -9,6 +11,8 @@ class Codetot_Gravity_Forms_Tracking {
 
   public function __construct()
   {
+    $this->cookies = Codetot_Gravity_Forms_Tracking_Cookies::instance();
+
     add_filter( 'gform_field_value_utm_source', array($this, 'set_value_utm_source') );
     add_filter( 'gform_field_value_utm_size', array($this, 'set_value_utm_size') );
     add_filter( 'gform_field_value_utm_campaign', array($this, 'set_value_utm_campaign') );
@@ -16,28 +20,26 @@ class Codetot_Gravity_Forms_Tracking {
     add_filter( 'gform_entries_column_filter', array($this, 'entries_column_filter'), 10, 5 );
   }
 
-  public function set_value_utm_source() {
-    $cookie_value = Codetot_Gravity_Forms_Tracking_Cookies::instance()->read_cookie('utm_source');
+  public function save_cookie_value_to_field_value($type, $default_value) {
+    $cookie_value = $this->cookies->read_cookie($type);
 
     if (!empty($cookie_value)) {
       return $cookie_value;
+    } else {
+      return $default_value;
     }
   }
 
-  public function set_value_utm_size() {
-    $cookie_value = Codetot_Gravity_Forms_Tracking_Cookies::instance()->read_cookie('utm_size');
-
-    if (!empty($cookie_value)) {
-      return $cookie_value;
-    }
+  public function set_value_utm_source($value) {
+    return $this->save_cookie_value_to_field_value('utm_source', $value);
   }
 
-  public function set_value_utm_campaign() {
-    $cookie_value = Codetot_Gravity_Forms_Tracking_Cookies::instance()->read_cookie('utm_campaign');
+  public function set_value_utm_size($value) {
+    return $this->save_cookie_value_to_field_value('utm_size', $value);
+  }
 
-    if (!empty($cookie_value)) {
-      return $cookie_value;
-    }
+  public function set_value_utm_campaign($value) {
+    return $this->save_cookie_value_to_field_value('utm_campaign', $value);
   }
 
   public function entries_column_filter($value, $form_id, $field_id, $entry, $query_string) {
