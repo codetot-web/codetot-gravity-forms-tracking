@@ -50,6 +50,15 @@ To make this plugin works, you must add 3 hidden fields. See installation steps 
 
 In form's entry list.
 
+= Any filter/action hooks? =
+
+```php
+// Set cookie time for saving
+add_filter('ct_gf_cookie_time', function() {
+  return time() + (86400 * 30);
+}
+```
+
 == Screenshots ==
 
 1. /assets/screenshot-1.png
@@ -63,6 +72,11 @@ directory take precedence. For example, `/assets/screenshot-1.png` would win ove
 2. This is the second screen shot
 
 == Changelog ==
+
+= 1.0.7 =
+* Rename cookie name for working with Pantheon environment using prefix `STYXKEY_`
+* Add filter `ct_gf_cookie_time` for easy to change saving cookie time.
+* Rename class to Codetot_Gravity_Forms_Tracking_Cookies for coding convention with plugin class.
 
 = 1.0.6 =
 * Fix existing cookies not validate.
