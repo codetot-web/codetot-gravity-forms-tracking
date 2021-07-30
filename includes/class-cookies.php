@@ -63,7 +63,7 @@ class Codetot_Gravity_Forms_Tracking_Cookies
     $_default_time = time() + (86400 * 30);
     $_time = !empty($time) ? $time : $_default_time; // Default is 1 day
 
-    if (empty($this->read_cookies())) {
+    if (empty($this->read_cookies()) && !empty($value)) {
       setcookie($this::$cookie_name, $value, apply_filters('ct_gf_cookie_time', $_time), COOKIEPATH, COOKIE_DOMAIN);
     }
   }
@@ -89,7 +89,7 @@ class Codetot_Gravity_Forms_Tracking_Cookies
   public function set_cookies($values)
   {
     // In case cookie is empty or not validate, we override existing cookies
-    if (is_array($values) && !$this->is_cookies_validated()) {
+    if (!$this->is_cookies_validated() && !empty($values) && is_array($values)) {
       $this->set_cookie(json_encode($values));
 
       return true;
@@ -102,7 +102,7 @@ class Codetot_Gravity_Forms_Tracking_Cookies
   {
     $cookies = $this->read_cookies();
 
-    if (!empty($cookies) && !empty($cookies[$key])) {
+    if ($this->is_cookies_validated() && !empty($cookies[$key])) {
       return $cookies[$key];
     }
 
@@ -116,7 +116,7 @@ class Codetot_Gravity_Forms_Tracking_Cookies
    */
   public function read_cookies()
   {
-    return !empty($_COOKIE[$this::$cookie_name]) && $this->is_cookies_validated() ? json_decode(stripslashes($_COOKIE[$this::$cookie_name]), true) : '';
+    return $this->is_cookies_validated() ? json_decode(stripslashes($_COOKIE[$this::$cookie_name]), true) : [];
   }
 
   /**
