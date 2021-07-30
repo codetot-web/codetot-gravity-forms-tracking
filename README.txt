@@ -4,7 +4,7 @@ Donate link:       https://codetot.com
 Tags:              gravity forms, addons, tracking, cookies
 Requires at least: 4.4
 Tested up to:      5.7
-Stable tag:        1.0.6
+Stable tag:        1.0.8
 License:           GPLv2 or later
 License URI:       http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -73,8 +73,11 @@ directory take precedence. For example, `/assets/screenshot-1.png` would win ove
 
 == Changelog ==
 
+= 1.0.8 =
+* Fix decode cookie data.
+
 = 1.0.7 =
-* Rename cookie name for working with Pantheon environment using prefix `STYXKEY_`
+* Rename cookie name for working with Pantheon environment using prefix `STYXKEY_`.
 * Add filter `ct_gf_cookie_time` for easy to change saving cookie time.
 * Rename class to Codetot_Gravity_Forms_Tracking_Cookies for coding convention with plugin class.
 
