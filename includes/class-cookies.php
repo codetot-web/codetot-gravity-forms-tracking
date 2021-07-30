@@ -5,12 +5,12 @@
  * @subpackage Codetot_Blocks_Templates
  * @author     CODE TOT JS <dev@codetot.com>
  */
-class Codetot_Gravity_Forms_Cookies
+class Codetot_Gravity_Forms_Tracking_Cookies
 {
   /**
    * Singleton instance
    *
-   * @var Codetot_Gravity_Forms_Cookies
+   * @var Codetot_Gravity_Forms_Tracking_Cookies
    */
   private static $instance;
 
@@ -25,7 +25,7 @@ class Codetot_Gravity_Forms_Cookies
   /**
    * Get singleton instance.
    *
-   * @return Codetot_Gravity_Forms_Cookies
+   * @return Codetot_Gravity_Forms_Tracking_Cookies
    */
   public final static function instance()
   {
@@ -137,4 +137,4 @@ class Codetot_Gravity_Forms_Cookies
   }
 }
 
-Codetot_Gravity_Forms_Cookies::instance();
+Codetot_Gravity_Forms_Tracking_Cookies::instance();
