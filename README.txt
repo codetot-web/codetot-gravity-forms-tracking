@@ -2,9 +2,9 @@
 Contributors:      codetot, khoipro
 Donate link:       https://codetot.com
 Tags:              gravity forms, addons, tracking, cookies
-Requires at least: 4.4
-Tested up to:      5.7
-Stable tag:        1.0.8
+Requires at least: 5.0
+Tested up to:      5.8
+Stable tag:        1.0.9
 License:           GPLv2 or later
 License URI:       http://www.gnu.org/licenses/gpl-2.0.html
 
