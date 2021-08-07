@@ -4,7 +4,7 @@ Donate link:       https://codetot.com
 Tags:              gravity forms, addons, tracking, cookies
 Requires at least: 4.6
 Tested up to:      5.8
-Stable tag:        1.0.10
+Stable tag:        1.0.11
 License:           GPLv2 or later
 License URI:       http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -72,6 +72,9 @@ directory take precedence. For example, `/assets/screenshot-1.png` would win ove
 2. This is the second screen shot
 
 == Changelog ==
+
+= 1.0.9 - 1.0.11 =
+* Fix cookie variable load.
 
 = 1.0.8 =
 * Fix decode cookie data.
