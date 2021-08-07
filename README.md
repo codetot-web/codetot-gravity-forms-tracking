@@ -29,3 +29,11 @@ utm_campaign
 ```
 
 Then activate this plugin.
+
+## Screenshots
+
+![Visible data in Entries](assets/screenshot-1.png)
+
+![Hidden field setting](assets/screenshot-2.png)
+
+![Configure dynamic parameter on hidden field settings](assets/screenshot-3.png)
