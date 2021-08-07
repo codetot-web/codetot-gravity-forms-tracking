@@ -17,7 +17,10 @@ class Codetot_Gravity_Forms_Tracking_Cookies
   private static $allowed_keys = [
     'utm_source',
     'utm_medium',
-    'utm_campaign'
+    'utm_campaign',
+    'utm_id',
+    'utm_term',
+    'utm_content'
   ];
 
   public static $cookie_name = 'STYXKEY_ct_gf_tracking';

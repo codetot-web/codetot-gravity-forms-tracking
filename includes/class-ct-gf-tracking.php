@@ -4,7 +4,10 @@ class Codetot_Gravity_Forms_Tracking {
   private static $allowed_keys = [
     'utm_source',
     'utm_medium',
-    'utm_campaign'
+    'utm_campaign',
+    'utm_id',
+    'utm_term',
+    'utm_content'
   ];
 
   public function __construct()
@@ -14,6 +17,9 @@ class Codetot_Gravity_Forms_Tracking {
     add_filter( 'gform_field_value_utm_source', array($this, 'set_value_utm_source') );
     add_filter( 'gform_field_value_utm_medium', array($this, 'set_value_utm_medium') );
     add_filter( 'gform_field_value_utm_campaign', array($this, 'set_value_utm_campaign') );
+    add_filter( 'gform_field_value_utm_id', array($this, 'set_value_utm_id') );
+    add_filter( 'gform_field_value_utm_term', array($this, 'set_value_utm_term') );
+    add_filter( 'gform_field_value_utm_content', array($this, 'set_value_utm_content') );
 
     add_filter( 'gform_entries_column_filter', array($this, 'entries_column_filter'), 10, 5 );
   }
@@ -43,6 +49,18 @@ class Codetot_Gravity_Forms_Tracking {
 
   public function set_value_utm_campaign($value) {
     return $this->save_cookie_value_to_field_value('utm_campaign', $value);
+  }
+
+  public function set_value_utm_id($value) {
+    return $this->save_cookie_value_to_field_value('utm_id', $value);
+  }
+
+  public function set_value_utm_term($value) {
+    return $this->save_cookie_value_to_field_value('utm_term', $value);
+  }
+
+  public function set_value_utm_content($value) {
+    return $this->save_cookie_value_to_field_value('utm_content', $value);
   }
 
   public function entries_column_filter($value, $form_id, $field_id, $entry, $query_string) {
