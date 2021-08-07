@@ -18,6 +18,9 @@ This small plugin helps to detect and save URL attributes as parameters in cooki
 UTM Source
 UTM Medium
 UTM Campaign
+UTM ID
+UTM Term
+UTM Content
 ```
 
 In each field, please enable "Enable dynamic field population" and set key value as:
@@ -26,6 +29,9 @@ In each field, please enable "Enable dynamic field population" and set key value
 utm_source
 utm_medium
 utm_campaign
+utm_id
+utm_term
+utm_content
 ```
 
 Then activate this plugin.

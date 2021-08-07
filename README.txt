@@ -4,7 +4,7 @@ Donate link:       https://codetot.com
 Tags:              gravity forms, addons, tracking, cookies
 Requires at least: 4.6
 Tested up to:      5.8
-Stable tag:        1.0.11
+Stable tag:        1.0.12
 License:           GPLv2 or later
 License URI:       http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -24,6 +24,9 @@ This is a Gravity Forms addons. It requires your website must have Gravity Forms
 UTM Source
 UTM Medium
 UTM Campaign
+UTM ID
+UTM Term
+UTM Content
 ```
 
 In each field, please enable "Enable dynamic field population" and set key value as:
@@ -32,6 +35,9 @@ In each field, please enable "Enable dynamic field population" and set key value
 utm_source
 utm_medium
 utm_campaign
+utm_id
+utm_term
+utm_content
 ```
 
 Then activate this plugin by uploading via website or extract a zip file.
@@ -66,6 +72,9 @@ add_filter('ct_gf_cookie_time', function() {
 3. Set dynamic parameter
 
 == Changelog ==
+
+= 1.0.12 =
+* Add values from `utm_id`, `utm_term` and `utm_content`.
 
 = 1.0.9 - 1.0.11 =
 * Fix cookie variable load.
