@@ -24,7 +24,7 @@ class Codetot_Gravity_Forms_Tracking {
     // GFCommon::log_debug('Save cookie name ' . $type  .': ' . $cookie_value .' - default value is: ' . $default_value );
 
     if (!empty($cookie_value)) {
-      return $cookie_value;
+      return sanitize_text_field($cookie_value);
     } else {
       return $default_value;
     }

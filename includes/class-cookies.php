@@ -60,6 +60,10 @@ class Codetot_Gravity_Forms_Tracking_Cookies
    */
   public function set_cookie($values, $time = '')
   {
+    if (!is_array($values)) {
+      return false;
+    }
+
     $_default_time = time() + (86400 * 30);
     $_time = !empty($time) ? $time : $_default_time; // Default is 1 day
 
@@ -69,16 +73,17 @@ class Codetot_Gravity_Forms_Tracking_Cookies
   }
 
   public function get_formatted_cookies() {
-    $data = $_COOKIE[$this::$cookie_name];
+    $cookie_data = stripslashes($_COOKIE[$this::$cookie_name]);
+
     // Example data below
     // $data = '%7B%22utm_source%22%3A%22meomeo%22%2C%22utm_size%22%3A%22medium%22%2C%22utm_campaign%22%3A%22meow%22%7D';
-    $decoded_data_array = json_decode(stripslashes($data), true);
+    $decoded_data_array = !empty($data) ? json_decode($cookie_data, true) : [];
 
     return is_array($decoded_data_array) ? $decoded_data_array : [];
   }
 
   public function is_cookies_validated() {
-    if (empty($_COOKIE[$this::$cookie_name])) {
+    if ( empty($_COOKIE[$this::$cookie_name]) ) {
       return false;
     }
 
@@ -127,7 +132,7 @@ class Codetot_Gravity_Forms_Tracking_Cookies
 
     foreach ($this::$allowed_keys as $query_key) {
       if (!empty($_GET[$query_key])) {
-        $available_values[$query_key] = esc_attr($_GET[$query_key]);
+        $available_values[$query_key] = esc_url_raw($_GET[$query_key]);
       }
     }
 
