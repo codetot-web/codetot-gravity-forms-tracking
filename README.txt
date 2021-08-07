@@ -12,7 +12,7 @@ Collect marketing campaign parameters from access URL to save to dynamic fields 
 
 == Description ==
 
-This is a Gravity Forms addons. It requires your website must have Gravity Forms installed. We use cookies to collect URL parameters which are limited to `utm_source`, `utm_size` and `utm_campaign`.
+This is a Gravity Forms addons. It requires your website must have Gravity Forms installed. We use cookies to collect URL parameters which are limited to `utm_source`, `utm_medium` and `utm_campaign`.
 
 == Installation ==
 
@@ -22,7 +22,7 @@ This is a Gravity Forms addons. It requires your website must have Gravity Forms
 
 ```
 UTM Source
-UTM Size
+UTM Medium
 UTM Campaign
 ```
 
@@ -30,15 +30,11 @@ In each field, please enable "Enable dynamic field population" and set key value
 
 ```
 utm_source
-utm_size
+utm_medium
 utm_campaign
 ```
 
 Then activate this plugin by uploading via website or extract a zip file.
-
-1. Upload `ct-gf-tracking.php` to the `/wp-content/plugins/` directory
-1. Activate the plugin through the 'Plugins' menu in WordPress
-1. Place `<?php do_action('plugin_name_hook'); ?>` in your templates
 
 == Frequently Asked Questions ==
 
@@ -65,11 +61,9 @@ add_filter('ct_gf_cookie_time', function() {
 2. /assets/screenshot-2.png
 3. /assets/screenshot-3.png
 
-1. This screen shot description corresponds to screenshot-1.(png|jpg|jpeg|gif). Note that the screenshot is taken from
-the /assets directory or the directory that contains the stable readme.txt (tags or trunk). Screenshots in the /assets
-directory take precedence. For example, `/assets/screenshot-1.png` would win over `/tags/4.3/screenshot-1.png`
-(or jpg, jpeg, gif).
-2. This is the second screen shot
+1. Visible variables in Entries columns
+2. Configure hidden fields
+3. Set dynamic parameter
 
 == Changelog ==
 
