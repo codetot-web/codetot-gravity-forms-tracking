@@ -16,11 +16,11 @@ class Codetot_Gravity_Forms_Tracking_Cookies
 
   private static $allowed_keys = [
     'utm_source',
-    'utm_size',
+    'utm_medium',
     'utm_campaign'
   ];
 
-  private static $cookie_name = 'STYXKEY_ct_gf_tracking';
+  public static $cookie_name = 'STYXKEY_ct_gf_tracking';
 
   /**
    * Get singleton instance.
@@ -60,14 +60,14 @@ class Codetot_Gravity_Forms_Tracking_Cookies
    */
   public function set_cookie($values, $time = '')
   {
-    if (!is_array($values)) {
+    if (empty($values) || !is_array($values)) {
       return false;
     }
 
     $_default_time = time() + (86400 * 30);
     $_time = !empty($time) ? $time : $_default_time; // Default is 1 day
 
-    if (empty($this->read_cookies()) && !empty($values)) {
+    if ( empty($this->read_cookies() ) ) {
       setcookie($this::$cookie_name, json_encode($values), apply_filters('ct_gf_cookie_time', $_time), COOKIEPATH, COOKIE_DOMAIN);
     }
   }
@@ -96,6 +96,8 @@ class Codetot_Gravity_Forms_Tracking_Cookies
   public function read_cookie($key)
   {
     $cookies = $this->read_cookies();
+
+    GFCommon::log_debug('Read cookie key  ' . $key  .': value is ' . $cookies[$key] );
 
     if ($this->is_cookies_validated() && !empty($cookies[$key])) {
 
@@ -132,7 +134,7 @@ class Codetot_Gravity_Forms_Tracking_Cookies
 
     foreach ($this::$allowed_keys as $query_key) {
       if (!empty($_GET[$query_key])) {
-        $available_values[$query_key] = esc_url_raw($_GET[$query_key]);
+        $available_values[$query_key] = sanitize_key($_GET[$query_key]);
       }
     }
 
