@@ -1,8 +1,6 @@
 <?php
 
 class Codetot_Gravity_Forms_Tracking {
-  var $cookies = null;
-
   private static $allowed_keys = [
     'utm_source',
     'utm_size',
@@ -11,7 +9,7 @@ class Codetot_Gravity_Forms_Tracking {
 
   public function __construct()
   {
-    $this->cookies = Codetot_Gravity_Forms_Tracking_Cookies::instance();
+    $this->cookies_class = Codetot_Gravity_Forms_Tracking_Cookies::instance();
 
     add_filter( 'gform_field_value_utm_source', array($this, 'set_value_utm_source') );
     add_filter( 'gform_field_value_utm_size', array($this, 'set_value_utm_size') );
@@ -21,7 +19,9 @@ class Codetot_Gravity_Forms_Tracking {
   }
 
   public function save_cookie_value_to_field_value($type, $default_value) {
-    $cookie_value = $this->cookies->read_cookie($type);
+    $cookie_value = $this->cookies_class->read_cookie($type);
+
+    // GFCommon::log_debug('Save cookie name ' . $type  .': ' . $cookie_value .' - default value is: ' . $default_value );
 
     if (!empty($cookie_value)) {
       return $cookie_value;
