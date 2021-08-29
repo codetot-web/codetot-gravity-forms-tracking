@@ -24,7 +24,7 @@ class Codetot_Gravity_Forms_Tracking {
     add_filter( 'gform_entries_column_filter', array($this, 'entries_column_filter'), 10, 5 );
   }
 
-  public function save_cookie_value_to_field_value($type, $default_value) {
+  public function save_cookie_value_to_field_value($type, $default_value = '') {
     $cookie_name = $this->cookies_class::$cookie_name;
     $cookie_data = stripslashes($_COOKIE[$cookie_name]);
     $decoded_data_array = !empty($cookie_data) ? json_decode($cookie_data, true) : [];
